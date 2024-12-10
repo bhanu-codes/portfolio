@@ -5,6 +5,16 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <include file="db/changelog/liquibase/ddl-create-users-table.xml"/>
+    <include file="db/changelog/liquibase/001_create_users_table.xml"/>
+    <include file="db/changelog/liquibase/002_create_user_metadata_table.xml"/>
+    <include file="db/changelog/liquibase/003_create_portfolio_table.xml"/>
+    <include file="db/changelog/liquibase/004_create_themes_table.xml"/>
+    <include file="db/changelog/liquibase/005_create_portfolio_theme_preferences_table.xml"/>
+    <include file="db/changelog/liquibase/006_create_projects_table.xml"/>
+    <include file="db/changelog/liquibase/007_create_contact_information_table.xml"/>
+    <include file="db/changelog/liquibase/008_create_education_table.xml"/>
+    <include file="db/changelog/liquibase/009_create_technical_skills_table.xml"/>
+    <include file="db/changelog/liquibase/010_create_achievements_table.xml"/>
+    <include file="db/changelog/liquibase/011_create_additional_details_table.xml"/>
 
 </databaseChangeLog>

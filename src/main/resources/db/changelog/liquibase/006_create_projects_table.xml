@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <property name="now()" value="CURRENT_TIMESTAMP"/>
+
+    <changeSet id="create_projects_table" author="bhanu">
+        <createTable tableName="projects">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="portfolio_id" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="project_name" type="varchar(100)" />
+            <column name="project_description" type="text" />
+            <column name="project_url" type="varchar(255)" />
+            <column name="created_at" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="projects"
+                                 baseColumnNames="portfolio_id"
+                                 referencedTableName="portfolio"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_projects_portfolio_id" />
+    </changeSet>
+</databaseChangeLog>
