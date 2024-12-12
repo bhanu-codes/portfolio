@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="create_portfolio_theme_preferences_table" author="bhanu">
+        <createTable tableName="portfolio_theme_preferences">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="portfolio_id" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="theme_id" type="int">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="portfolio_theme_preferences"
+                                 baseColumnNames="portfolio_id"
+                                 referencedTableName="portfolio"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_portfolio_theme_preferences_portfolio_id" />
+        <addForeignKeyConstraint baseTableName="portfolio_theme_preferences"
+                                 baseColumnNames="theme_id"
+                                 referencedTableName="theme"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_portfolio_theme_preferences_theme_id" />
+    </changeSet>
+</databaseChangeLog>
