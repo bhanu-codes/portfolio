@@ -1,0 +1,37 @@
+<main class="case-index page-container">
+  <header class="index-intro">
+    <p class="eyebrow">Case Studies</p>
+    <h1>Engineering decisions behind real-world systems.</h1>
+    <p class="intro-copy">
+      A closer look at the problems, constraints, architecture and engineering decisions behind selected projects.
+    </p>
+  </header>
+
+  <section aria-label="Selected engineering case studies">
+    <ol class="case-list">
+      @for (study of studies; track study.slug; let first = $first) {
+        <li>
+          <a class="study-row" [class.is-featured]="first" [routerLink]="['/case-studies', study.slug]">
+            <div class="study-index">
+              <span>{{ study.number }}</span>
+              <span class="study-category">{{ study.category }}</span>
+            </div>
+            <div class="study-copy">
+              @if (study.projectStatus) {
+                <p class="project-status">{{ study.projectStatus }}</p>
+              }
+              <h2>{{ study.title }}</h2>
+              <p class="study-description">{{ study.shortDescription }}</p>
+              <ul class="technology-list" [attr.aria-label]="study.title + ' technologies'">
+                @for (technology of study.technologies; track technology) {
+                  <li>{{ technology }}</li>
+                }
+              </ul>
+            </div>
+            <span class="read-link">Read Case Study <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+      }
+    </ol>
+  </section>
+</main>

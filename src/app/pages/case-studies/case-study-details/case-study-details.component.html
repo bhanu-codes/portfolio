@@ -1,0 +1,130 @@
+<main class="case-detail page-container">
+  @if (study(); as item) {
+    <article>
+      <header class="detail-header">
+        <a class="breadcrumb" routerLink="/case-studies">Case Studies <span aria-hidden="true">/</span></a>
+        <p class="eyebrow">{{ item.category }}</p>
+        @if (item.projectStatus) {
+          <p class="project-status">{{ item.projectStatus }}</p>
+        }
+        <h1>{{ item.title }}</h1>
+        <p class="detail-introduction">{{ item.introduction }}</p>
+        <p class="detail-context">{{ item.context }}</p>
+      </header>
+
+      <section class="narrative-section">
+        <p class="section-index">01 / The Problem</p>
+        <h2>The Problem</h2>
+        <p>{{ item.problem }}</p>
+      </section>
+
+      @if (item.contextDetails) {
+        <section class="narrative-section">
+          <p class="section-index">02 / Context</p>
+          <h2>Context</h2>
+          <p>{{ item.contextDetails }}</p>
+        </section>
+      }
+
+      @if (item.challenges.length) {
+        <section class="narrative-section">
+          <p class="section-index">03 / Engineering Challenges</p>
+          <h2>The Challenge</h2>
+          <ul class="editorial-list">
+            @for (challenge of item.challenges; track challenge) {
+              <li>{{ challenge }}</li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (item.architecture.length) {
+        <section class="wide-section">
+          <p class="section-index">04 / System Shape</p>
+          <h2>Architecture</h2>
+          <div class="architecture-grid">
+            @for (diagram of item.architecture; track diagram.title) {
+              <app-architecture-diagram [diagram]="diagram" />
+            }
+          </div>
+        </section>
+      }
+
+      @if (item.decisions.length) {
+        <section class="wide-section">
+          <p class="section-index">05 / Engineering Approach</p>
+          <h2>Engineering Decisions</h2>
+          <div class="decision-grid">
+            @for (decision of item.decisions; track decision.title; let i = $index) {
+              <app-engineering-decision [decision]="decision" [number]="(i + 1).toString().padStart(2, '0')" />
+            }
+          </div>
+        </section>
+      }
+
+      @if (item.implementation.length) {
+        <section class="narrative-section">
+          <p class="section-index">06 / Delivery</p>
+          <h2>Implementation</h2>
+          <ul class="editorial-list">
+            @for (detail of item.implementation; track detail) {
+              <li>{{ detail }}</li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (item.reliability?.length) {
+        <section class="narrative-section">
+          <p class="section-index">07 / Reliability & Constraints</p>
+          <h2>Reliability &amp; Constraints</h2>
+          <ul class="editorial-list">
+            @for (detail of item.reliability; track detail) {
+              <li>{{ detail }}</li>
+            }
+          </ul>
+        </section>
+      }
+
+      <section class="outcome-section">
+        <p class="section-index">{{ item.reliability?.length ? '08' : '07' }} / Outcome</p>
+        <h2>Outcome</h2>
+        <p>{{ item.outcome }}</p>
+      </section>
+
+      @if (item.learnings.length) {
+        <section class="narrative-section">
+          <p class="section-index">{{ item.reliability?.length ? '09' : '08' }} / Reflection</p>
+          <h2>What I Learned</h2>
+          <ul class="editorial-list">
+            @for (learning of item.learnings; track learning) {
+              <li>{{ learning }}</li>
+            }
+          </ul>
+        </section>
+      }
+
+      @if (item.technologies.length) {
+        <section class="technology-section" aria-labelledby="technologies-title">
+          <p class="section-index">{{ item.reliability?.length ? '10' : '09' }} / Tools &amp; Platforms</p>
+          <h2 id="technologies-title">Technologies</h2>
+          <ul class="technology-list" [attr.aria-label]="item.title + ' technologies'">
+            @for (technology of item.technologies; track technology) {
+              <li>{{ technology }}</li>
+            }
+          </ul>
+        </section>
+      }
+
+      <nav class="article-navigation" aria-label="Case study navigation">
+        <a routerLink="/case-studies"><span aria-hidden="true">←</span> Back to Case Studies</a>
+      </nav>
+    </article>
+  } @else {
+    <section class="not-found" aria-labelledby="not-found-title">
+      <p class="eyebrow">Case Studies</p>
+      <h1 id="not-found-title">This case study is unavailable.</h1>
+      <a routerLink="/case-studies">Back to Case Studies</a>
+    </section>
+  }
+</main>

@@ -1,0 +1,24 @@
+<header class="site-header" [class.is-scrolled]="isScrolled()">
+  <div class="header-inner page-container">
+    <a class="brand" [routerLink]="['/']" aria-label="Bhanu Neeli, home" (click)="closeMenu()">
+      <span>BHANU NEELI</span>
+    </a>
+
+    <button #menuButton class="menu-toggle" type="button"
+      [attr.aria-expanded]="menuOpen()" aria-controls="primary-navigation"
+      [attr.aria-label]="menuOpen() ? 'Close navigation menu' : 'Open navigation menu'"
+      (click)="toggleMenu()">
+      <span class="menu-toggle-label">{{ menuOpen() ? 'Close' : 'Menu' }}</span>
+      <span class="menu-icon" [class.is-open]="menuOpen()" aria-hidden="true"><span></span><span></span></span>
+    </button>
+
+    <nav id="primary-navigation" class="primary-navigation" [class.is-open]="menuOpen()" aria-label="Main navigation">
+      <a [routerLink]="['/']" fragment="work" (click)="closeMenu()">Work</a>
+      <a [routerLink]="['/case-studies']" routerLinkActive="is-active" (click)="closeMenu()">Case Studies</a>
+      <a [routerLink]="['/']" fragment="experience" (click)="closeMenu()">Experience</a>
+      <a [routerLink]="['/']" fragment="ai-lab" (click)="closeMenu()">AI Lab</a>
+      <a [routerLink]="['/']" fragment="about" (click)="closeMenu()">About</a>
+      <a class="connect-link" [routerLink]="['/']" fragment="contact" (click)="closeMenu()">Let’s Connect <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>

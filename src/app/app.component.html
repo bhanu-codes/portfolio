@@ -1,22 +1,3 @@
-<app-navbar (navigateTo)="onNavigate($event)"></app-navbar>
-
-<div *ngIf="selectedComponent === 'home'">
-  <app-home></app-home>
-</div>
-<div *ngIf="selectedComponent === 'about'">
-  <app-about></app-about>
-</div>
-<div *ngIf="selectedComponent === 'skills'">
-  <app-skills></app-skills>
-</div>
-<div *ngIf="selectedComponent === 'experience'">
-  <app-experience></app-experience>
-</div>
-<div *ngIf="selectedComponent === 'projects'">
-  <app-projects></app-projects>
-</div>
-<div *ngIf="selectedComponent === 'contact'">
-  <app-contact></app-contact>
-</div>
-
-<app-footer></app-footer>
+<app-navbar />
+<router-outlet />
+<app-footer />

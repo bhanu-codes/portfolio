@@ -1,0 +1,25 @@
+<div class="ai-lab">
+  <header class="lab-intro">
+    <p class="eyebrow">AI Lab</p>
+    <h2 id="ai-lab-title">Exploring what software becomes when it can reason.</h2>
+    <p class="intro-copy">
+      I'm currently expanding my engineering toolkit into Generative AI, building hands-on applications around LLMs,
+      RAG, vector search and AI-powered workflows.
+    </p>
+    <p class="role-context">Current professional role <strong>Software Engineer</strong></p>
+  </header>
+
+  <dl class="positioning" aria-label="Current professional direction">
+    @for (item of positioning; track item.label) {
+      <div class="position-item">
+        <dt>{{ item.label }}</dt>
+        <dd>{{ item.description }}</dd>
+      </div>
+    }
+  </dl>
+
+  <div class="lab-layout">
+    <app-ai-areas />
+    <app-ai-project />
+  </div>
+</div>

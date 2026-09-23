@@ -1,0 +1,9 @@
+<nav aria-label="Social links">
+  @for (link of links; track link.href) {
+    <a [href]="link.href" [attr.target]="link.external ? '_blank' : null"
+      [attr.rel]="link.external ? 'noopener noreferrer' : null"
+      [attr.aria-label]="link.external ? link.label + ' profile (opens in a new tab)' : 'Email'">
+      {{ link.label }}
+    </a>
+  }
+</nav>

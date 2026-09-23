@@ -1,0 +1,28 @@
+<article class="project-panel" aria-labelledby="assistant-title">
+  <div class="project-heading">
+    <p class="project-label"><span aria-hidden="true"></span> AI Project · Building</p>
+    <p class="project-stage">Learning project</p>
+  </div>
+  <h3 id="assistant-title">Enterprise Knowledge Assistant</h3>
+  <p class="project-description">
+    An experimental AI application exploring how enterprise documents can be transformed into searchable knowledge
+    and used to answer questions with retrieval-grounded responses.
+  </p>
+  <div class="architecture">
+    <div class="architecture-heading">
+      <h4>Knowledge retrieval flow</h4>
+      <span>Conceptual architecture</span>
+    </div>
+    <ol class="flow-list" aria-label="Document processing and grounded response flow">
+      @for (step of flow; track step.label; let index = $index) {
+        <li class="flow-step">
+          <span class="step-index">0{{ index + 1 }}</span>
+          <span class="step-label">{{ step.label }}</span>
+        </li>
+      }
+    </ol>
+  </div>
+  <ul class="technology-tags" aria-label="Project technologies being explored">
+    @for (technology of technologies; track technology) { <li>{{ technology }}</li> }
+  </ul>
+</article>

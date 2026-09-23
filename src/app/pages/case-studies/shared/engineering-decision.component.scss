@@ -1,0 +1,15 @@
+:host { display: block; min-width: 0; }
+.decision { height: 100%; padding: 1.2rem 0 1.4rem; border-top: 1px solid var(--color-border); }
+.decision-label { margin: 0 0 0.65rem; color: var(--color-accent); font-size: var(--text-caption); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.decision-heading { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.7rem; align-items: start; }
+.decision-heading span { padding-top: 0.2rem; color: var(--color-accent); font-size: var(--text-small); font-variant-numeric: tabular-nums; }
+.decision-heading h3 { margin: 0; font-size: clamp(1.05rem, 1.7vw, 1.35rem); font-weight: 550; line-height: 1.4; letter-spacing: -0.025em; }
+dl { display: grid; gap: 0.7rem; margin: 0.8rem 0 0 2.7rem; }
+dl div { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.55rem; }
+dt { color: var(--color-text-secondary); font-size: var(--text-small); font-weight: 600; }
+dd { margin: 0; color: var(--color-text-muted); font-size: var(--text-small); line-height: 1.65; }
+
+@media (max-width: 30rem) {
+  dl { margin-left: 0; }
+  dl div { grid-template-columns: 1fr; gap: 0.15rem; }
+}

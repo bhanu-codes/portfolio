@@ -1,0 +1,28 @@
+<div class="expertise-section">
+  <header class="expertise-heading">
+    <p class="eyebrow">What I Build</p>
+    <h2 id="expertise-title">Engineering across systems, products and intelligence.</h2>
+  </header>
+
+  <div class="expertise-grid">
+    @for (area of areas; track area.number) {
+      <article class="expertise-area" [class.is-learning]="area.learning">
+        <div class="area-heading">
+          <span class="area-number">{{ area.number }}</span>
+          <div>
+            <h3>{{ area.title }}</h3>
+            @if (area.learning) {
+              <span class="learning-label">Learning / Building</span>
+            }
+          </div>
+        </div>
+        <p class="area-description">{{ area.description }}</p>
+        <ul class="technology-list" [attr.aria-label]="area.title + ' technologies'">
+          @for (technology of area.technologies; track technology) {
+            <li>{{ technology }}</li>
+          }
+        </ul>
+      </article>
+    }
+  </div>
+</div>

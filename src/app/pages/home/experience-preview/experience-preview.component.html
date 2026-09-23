@@ -1,0 +1,66 @@
+<div class="experience-content">
+  <header class="section-intro">
+    <p class="eyebrow">Experience</p>
+    <h2 id="experience-title">Engineering enterprise software at scale.</h2>
+    <p class="section-summary">
+      Four years of experience building, modernising and supporting enterprise applications across airline
+      operations, finance, eProcurement and logistics.
+    </p>
+  </header>
+
+  <div class="timeline" aria-label="Professional experience">
+    @for (experience of experiences; track experience.organization; let index = $index) {
+      <article class="role">
+        <div class="role-date">
+          <div class="company-mark" [class.trimindtech-mark]="experience.organization === 'TrimindTech Solutions Pvt. Ltd.'">
+            <img [src]="experience.logoSrc" [alt]="experience.logoAlt" />
+          </div>
+          <p>{{ experience.startDate }} <span aria-hidden="true">—</span> {{ experience.endDate }}</p>
+        </div>
+
+        <div class="role-content">
+          <header class="role-heading">
+            <div class="role-identity">
+              <div class="company-copy">
+              <p class="role-index">0{{ index + 1 }} / EXPERIENCE</p>
+              <h3>{{ experience.organization }}</h3>
+              <p class="role-title">{{ experience.role }}</p>
+              </div>
+            </div>
+            @if (experience.domain) {
+              <p class="domain">{{ experience.domain }}</p>
+            }
+          </header>
+
+          <p class="role-summary">{{ experience.summary }}</p>
+
+          <div class="contributions">
+            <h4>Selected contributions</h4>
+            <ul>
+              @for (contribution of experience.featuredContributions; track contribution) {
+                <li>{{ contribution }}</li>
+              }
+            </ul>
+          </div>
+
+          @if (experience.additionalContributions.length) {
+            <details class="additional">
+              <summary>More contributions <span aria-hidden="true">+</span></summary>
+              <ul>
+                @for (contribution of experience.additionalContributions; track contribution) {
+                  <li>{{ contribution }}</li>
+                }
+              </ul>
+            </details>
+          }
+
+          <ul class="technology-list" aria-label="Technologies used">
+            @for (technology of experience.technologies; track technology) {
+              <li>{{ technology }}</li>
+            }
+          </ul>
+        </div>
+      </article>
+    }
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<section class="areas" aria-labelledby="areas-title">
+  <header class="subsection-heading">
+    <p class="eyebrow">Current areas</p>
+    <h3 id="areas-title">Learning by building.</h3>
+  </header>
+  <ol class="area-list">
+    @for (area of areas; track area.number) {
+      <li class="area-item">
+        <span class="area-number">{{ area.number }}</span>
+        <div class="area-content">
+          <div class="area-heading">
+            <h4>{{ area.title }}</h4>
+            <span class="area-status">{{ area.status }}</span>
+          </div>
+          <p>{{ area.description }}</p>
+          <ul class="technology-tags" [attr.aria-label]="area.title + ' technologies'">
+            @for (technology of area.technologies; track technology) { <li>{{ technology }}</li> }
+          </ul>
+        </div>
+      </li>
+    }
+  </ol>
+</section>

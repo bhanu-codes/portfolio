@@ -1,0 +1,77 @@
+<div class="featured-work">
+  <header class="section-intro">
+    <p class="eyebrow">Selected Work</p>
+    <h2 id="work-title">Projects built for real-world systems.</h2>
+    <p class="section-description">A selection of enterprise applications, integrations and engineering work spanning airline operations, finance, eProcurement and logistics.</p>
+  </header>
+
+  @if (featuredProject; as project) {
+    <article class="featured-project">
+      <div class="project-meta">
+        <span class="project-number">{{ project.number }}</span>
+        <span class="project-category">{{ project.category }}</span>
+        <span class="featured-label">Featured</span>
+      </div>
+
+      <div class="featured-layout">
+        <div class="featured-copy">
+          <h3>{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
+
+          @if (project.highlights?.length) {
+            <ul class="project-highlights" aria-label="Engineering highlights">
+              @for (highlight of project.highlights; track highlight) {
+                <li>{{ highlight }}</li>
+              }
+            </ul>
+          }
+
+          <ul class="technology-list" [attr.aria-label]="project.title + ' technologies'">
+            @for (technology of project.technologies; track technology) {
+              <li>{{ technology }}</li>
+            }
+          </ul>
+
+          <a class="project-link" [routerLink]="['/projects', project.slug]" [attr.aria-label]="'View project: ' + project.title">
+            View Project <span aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
+
+        <div class="featured-visual">
+          <app-project-flow-visual [steps]="project.visualSteps" />
+          @if (project.challenges?.[1]; as challenge) {
+            <p class="visual-caption">{{ challenge }}</p>
+          }
+        </div>
+      </div>
+    </article>
+  }
+
+  <div class="project-list" aria-label="More selected projects">
+    @for (project of otherProjects; track project.slug) {
+      <article class="project-row">
+        <div class="project-row-heading">
+          <div class="project-meta">
+            <span class="project-number">{{ project.number }}</span>
+            <span class="project-category">{{ project.category }}</span>
+          </div>
+          <h3>{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
+          @if (project.contribution) {
+            <p class="project-contribution">{{ project.contribution }}</p>
+          }
+        </div>
+        <div class="project-row-details">
+          <ul class="technology-list" [attr.aria-label]="project.title + ' technologies'">
+            @for (technology of project.technologies; track technology) {
+              <li>{{ technology }}</li>
+            }
+          </ul>
+          <a class="project-link" [routerLink]="['/projects', project.slug]" [attr.aria-label]="'View project: ' + project.title">
+            View Project <span aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
+      </article>
+    }
+  </div>
+</div>

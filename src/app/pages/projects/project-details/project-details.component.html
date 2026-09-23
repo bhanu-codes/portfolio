@@ -1,0 +1,86 @@
+<main class="project-detail page-container">
+  @if (project(); as project) {
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/#work">Selected Work</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ project.title }}</span>
+    </nav>
+
+    <header class="detail-header">
+      <div class="detail-meta">
+        <span class="project-number">{{ project.number }}</span>
+        <span>{{ project.category }}</span>
+        @if (project.featured) {
+          <span class="featured-label">Featured</span>
+        }
+      </div>
+      <h1>{{ project.title }}</h1>
+      <app-project-flow-visual [steps]="project.visualSteps" />
+    </header>
+
+    <div class="detail-content">
+      <div class="detail-sections">
+        <section aria-labelledby="overview-title">
+          <h2 id="overview-title">Overview</h2>
+          <p>{{ project.description }}</p>
+        </section>
+
+        @if (project.contribution) {
+          <section aria-labelledby="contribution-title">
+            <h2 id="contribution-title">Role &amp; Contribution</h2>
+            <p>{{ project.contribution }}</p>
+          </section>
+        }
+
+        @if (project.highlights?.length) {
+          <section aria-labelledby="highlights-title">
+            <h2 id="highlights-title">Engineering Highlights</h2>
+            <ul class="detail-list">
+              @for (highlight of project.highlights; track highlight) {
+                <li>{{ highlight }}</li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (project.challenges?.length) {
+          <section aria-labelledby="challenges-title">
+            <h2 id="challenges-title">Challenges</h2>
+            <ul class="detail-list">
+              @for (challenge of project.challenges; track challenge) {
+                <li>{{ challenge }}</li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (project.lessons?.length) {
+          <section aria-labelledby="lessons-title">
+            <h2 id="lessons-title">Lessons Learned</h2>
+            <ul class="detail-list">
+              @for (lesson of project.lessons; track lesson) {
+                <li>{{ lesson }}</li>
+              }
+            </ul>
+          </section>
+        }
+      </div>
+
+      <aside class="technology-panel" aria-labelledby="stack-title">
+        <h2 id="stack-title">Technology Stack</h2>
+        <ul class="technology-list">
+          @for (technology of project.technologies; track technology) {
+            <li>{{ technology }}</li>
+          }
+        </ul>
+        <a class="back-link" routerLink="/#work">&#8592; Back to Selected Work</a>
+      </aside>
+    </div>
+  } @else {
+    <section class="not-found" aria-labelledby="not-found-title">
+      <p class="eyebrow">Selected Work</p>
+      <h1 id="not-found-title">Project not found</h1>
+      <a class="back-link" routerLink="/#work">&#8592; Back to Selected Work</a>
+    </section>
+  }
+</main>
