@@ -28,10 +28,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 ## Build this project using the following command or run the script build-gh:
-ng build --configuration production --base-href "https://bhanu-codes.github.io/portfolio-frontend/"
+ng build --configuration production --base-href "/portfolio/"
 
 ## Deploy this project in gh pages using the following command or run the script deploy-sh:
-npx angular-cli-ghpages --dir=dist/portfolio-frontend/browser
+npx angular-cli-ghpages --dir=dist/portfolio/browser
 
 ## You can access this project using the following url:
-https://bhanu-codes.github.io/portfolio-frontend/
+https://bhanu-codes.github.io/portfolio/
